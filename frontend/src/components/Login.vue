@@ -3,7 +3,7 @@
     <div class="modalSignUp">
       <v-col class="mb-6">
         <div class="text-center">
-          <v-dialog v-model="dialog" width="600">
+          <v-dialog width="600">
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 block
@@ -26,14 +26,9 @@
 
                   <v-text-field label="Lastname" required></v-text-field>
 
-                  <v-text-field
-        
-                    label="E-mail"
-                    required
-                  ></v-text-field>
+                  <v-text-field label="E-mail" required></v-text-field>
 
                   <v-text-field
-          
                     :type="'password'"
                     label="Password"
                     required
@@ -70,12 +65,10 @@
         <h1 class="display-2 font-weight-bold mb-3">Welcome</h1>
 
         <div class="loginForm">
-          <v-form ref="formLogin">
-            <v-text-field label="E-mail" required>
-            </v-text-field>
+          <v-form id="signup-form" ref="signup-form">
+            <v-text-field label="E-mail" required> </v-text-field>
 
             <v-text-field
-   
               label="Password"
               type="password"
               required
@@ -106,6 +99,12 @@
 </template>
 
 
+
+<script>
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="./test.js"></script>
 
 
 
