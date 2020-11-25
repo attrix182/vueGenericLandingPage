@@ -31,3 +31,5 @@ Generic landing pagegit ad
 if npm run serve doesnt work: 
 
 .\node_modules\.bin\vue-cli-service serve
+
+//#1976D2

@@ -3,149 +3,116 @@
     <v-row class="text-center">
       <v-col cols="12">
         <v-img
-          :src="require('../assets/logo.svg')"
+          :src="require('../assets/signUp2.png')"
           class="my-3"
           contain
-          height="200"
+          height="250"
         />
       </v-col>
 
       <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
+        <h1 class="display-2 font-weight-bold mb-3">Welcome</h1>
 
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <v-text-field v-model="email" label="E-mail" required></v-text-field>
 
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
+          <v-text-field
+            v-model="password"
+            :counter="10"
+            label="Password"
+            required
+          ></v-text-field>
 
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
+          <v-col class="mb-4">
+            <v-btn color="primary" elevation="11">LOG IN</v-btn>
+          </v-col>
+          <v-col class="mb-4">
+            <div class="text-center">
+              <v-dialog v-model="dialog" width="500">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    block
+                    color="primary"
+                    elevation="11"
+                    v-bind="attrs"
+                    v-on="on"
+                    >Create New Account</v-btn
+                  >
+                </template>
 
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
+                <v-card>
+                  <v-card-title class="headline grey lighten-2">
+                   Sign Up
+                  </v-card-title>
 
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
+                  <v-card-text>
+                    <v-form ref="form" v-model="valid" lazy-validation>
+                      <v-text-field
+                        v-model="name"
+                        :counter="10"
+                        :rules="nameRules"
+                        label="Name"
+                        required
+                      ></v-text-field>
 
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
+                      <v-text-field
+                        v-model="email"
+                        :rules="emailRules"
+                        label="E-mail"
+                        required
+                      ></v-text-field>
 
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
+
+
+                       <v-text-field
+                        v-model="password"
+                        :type="'password'"
+                        :rules="passwordRules"
+                        label="Password"
+                        required
+                      ></v-text-field>
+
+                    </v-form>
+                  </v-card-text>
+
+                  <v-divider></v-divider>
+
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+
+                    <v-btn color="primary" text @click="dialog = false">
+                      Continue
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+            </div>
+          </v-col>
+        </v-form>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<script>
-  export default {
-    name: 'HelloWorld',
 
-    data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com',
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com',
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuejs.com/vuetify',
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs',
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify',
-        },
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer',
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-        },
-      ],
-    }),
-  }
+<script>
+export default {
+  data() {
+    return {
+      dialog: false,
+    };
+  },
+};
+</script>
+
+
+
+
+
+<script>
+export default {
+  name: "HelloWorld",
+
+  data: () => ({}),
+};
 </script>
