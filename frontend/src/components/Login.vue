@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="modalSignUp">
-      <v-col class="mb-4">
+      <v-col class="mb-6">
         <div class="text-center">
           <v-dialog v-model="dialog" width="600">
             <template v-slot:activator="{ on, attrs }">
@@ -21,32 +21,20 @@
               </v-card-title>
 
               <v-card-text>
-                <v-form ref="formRegister" v-model="valid" lazy-validation>
-                  <v-text-field
-                    v-model="name"
-                    :rules="nameRules"
-                    label="Name"
-                    required
-                  ></v-text-field>
+                <v-form ref="formRegister">
+                  <v-text-field label="Name" required></v-text-field>
+
+                  <v-text-field label="Lastname" required></v-text-field>
 
                   <v-text-field
-                    v-model="lastname"
-                    :rules="lastnameRules"
-                    label="Lastname"
-                    required
-                  ></v-text-field>
-
-                  <v-text-field
-                    v-model="email"
-                    :rules="emailRules"
+        
                     label="E-mail"
                     required
                   ></v-text-field>
 
                   <v-text-field
-                    v-model="password"
+          
                     :type="'password'"
-                    :rules="passwordRules"
                     label="Password"
                     required
                   ></v-text-field>
@@ -82,12 +70,12 @@
         <h1 class="display-2 font-weight-bold mb-3">Welcome</h1>
 
         <div class="loginForm">
-          <v-form ref="formLogin" v-model="valid" lazy-validation>
-            <v-text-field v-model="email" label="E-mail" required>
+          <v-form ref="formLogin">
+            <v-text-field label="E-mail" required>
             </v-text-field>
 
             <v-text-field
-              v-model="password"
+   
               label="Password"
               type="password"
               required
@@ -116,6 +104,8 @@
     </v-row>
   </v-container>
 </template>
+
+
 
 
 
