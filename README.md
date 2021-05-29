@@ -15,4 +15,6 @@ if npm run serve doesnt work, try:
 
 ```
 
+El proyecto fue construir un login con Vue y Vuetify
+
 ![Alt text](https://github.com/attrix182/vueGenericLandingPage/blob/main/image.png?raw=true "Title")
